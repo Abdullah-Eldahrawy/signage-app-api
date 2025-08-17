@@ -3,11 +3,11 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import serverless from 'serverless-http'; // ✅ ES module import
 
 import routes from '../routes/index.js';
 import errorHandler from './middelware/error.js';
-
-import { swaggerUi, swaggerSpec } from './config/swagger.js';
+import { swaggerUi, swaggerSpec } from '../swagger.js';
 
 const app = express();
 
@@ -27,5 +27,8 @@ app.get("/api-docs.json", (req, res) => {
 app.use('/api', routes);
 
 app.use(errorHandler);
+
+// ✅ Wrap with serverless-http
+export const handler = serverless(app);
 
 export default app;

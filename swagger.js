@@ -15,7 +15,7 @@ const options = {
       },
     ],
   },
-  apis: ['C:\\Users\\Abdullah\\Desktop\\signage-app-api\\routes\\*.js'], // path to your route files
+  apis: ['./routes/*.js'], // path to your route files
 };
 
 const swaggerSpec = swaggerJsdoc(options);
