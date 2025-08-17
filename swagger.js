@@ -11,7 +11,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:4000/api', // change based on your base URL
+        url: 'https://signage-app-api.vercel.app//api', // change based on your base URL
       },
     ],
   },
