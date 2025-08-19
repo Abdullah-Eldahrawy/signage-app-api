@@ -3,7 +3,7 @@ import swaggerUi from 'swagger-ui-express';
 
 const options = {
   definition: {
-    openapi: '3.0.0', // OpenAPI version
+    openapi: '3.0.0', 
     info: {
       title: 'My API',
       version: '1.0.0',
@@ -11,11 +11,11 @@ const options = {
     },
     servers: [
       {
-        url: 'https://signage-app-api.vercel.app/api', // change based on your base URL
+        url: 'https://signage-app-api.vercel.app/api', 
       },
     ],
   },
-  apis: ['./routes/*.js'], // path to your route files
+  apis: ['./routes/*.js'], 
 };
 
 const swaggerSpec = swaggerJsdoc(options);
