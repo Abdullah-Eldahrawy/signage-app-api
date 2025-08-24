@@ -9,11 +9,10 @@ const options = {
       version: '1.0.0',
       description: 'API documentation for my backend',
     },
+    
     servers: [
-      {
-        url: 'https://signage-app-api.vercel.app/api', 
-      },
-    ],
+      { url: process.env.BASE_URL || '/' }
+    ]
   },
   apis: ['./routes/*.js'], 
 };

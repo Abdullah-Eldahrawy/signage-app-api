@@ -22,11 +22,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Serve swagger UI and JSON spec under /api so Vercel routing works consistently
+app.use('/api/api-docs', swaggerUi.serve, swaggerUi.setup(null, { swaggerOptions: { url: '/api/api-docs.json' } }));
 
-// Serve JSON spec
-app.get("/api-docs.json", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
+// Serve JSON spec at the same /api path
+app.get('/api/api-docs.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
   res.send(swaggerSpec);
 });
 
