@@ -53,6 +53,7 @@ export const forwardSignageRequest = async (req, res) => {
     const cp4baPayload = {
       "signageRequest":{
         id: signageRequest._id ? signageRequest._id.toString() : undefined,
+        userId: req.user && req.user.id ? req.user.id.toString() : undefined,
         fullName: signageRequest.fullName,
         installationDate: signageRequest.installationDate,
         installationAddress: signageRequest.installationAddress,
