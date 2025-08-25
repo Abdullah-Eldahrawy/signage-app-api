@@ -13,7 +13,7 @@ const router = Router();
  *     summary: Create a modification for a signage request (admin only - Basic auth service account)
  *     tags: [modifications]
  *     security:
- *       - basicAuth: []
+ *       - basic: []
  *     requestBody:
  *       required: true
  *       content:
