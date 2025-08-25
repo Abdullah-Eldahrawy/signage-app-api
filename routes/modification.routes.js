@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { createModification, listModifications, getModificationById } from '../controllers/modification.Controller.js';
 import auth from '../src/middelware/auth.js';
+import basicAuth from '../src/middelware/basicAuth.js';
 import { permit } from '../src/middelware/authorize.js';
 
 const router = Router();
@@ -9,10 +10,10 @@ const router = Router();
  * @swagger
  * /modifications/createModoficationReq:
  *   post:
- *     summary: Create a modification for a signage request (admin only)
+ *     summary: Create a modification for a signage request (admin only - Basic auth service account)
  *     tags: [modifications]
  *     security:
- *       - bearerAuth: []
+ *       - basicAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -33,7 +34,8 @@ const router = Router();
  *       201:
  *         description: Modification created
  */
-router.post('/createModoficationReq', auth, permit('admin'), createModification);
+// This route accepts Basic Auth (service account) instead of Bearer; all other routes keep using Bearer JWT
+router.post('/createModoficationReq', basicAuth, permit('admin'), createModification);
 
 /**
  * @swagger

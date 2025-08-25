@@ -5,7 +5,7 @@ import Modification from '../models/Modification.js';
 
 export const forwardSignageRequest = async (req, res) => {
   try {
-    const apiUrl = "https://cpd-cp4ba.apps.automation.sumerge.com/bas/automationservices/rest/SB/SR082_7/Signage%20Intake%20API/createSignageRequest";
+    const apiUrl = "https://cpd-cp4ba.apps.automation.sumerge.com/bas/automationservices/rest/SB/SR08252/Signage%20Intake%20API/createSignageRequest";
 
     const username = 'fnadmin';
     const password = 'P@ssw00rd';
@@ -13,18 +13,14 @@ export const forwardSignageRequest = async (req, res) => {
     const agent = new https.Agent({
         rejectUnauthorized: false,
     });
-
-    // Extract signageRequest from the request body
     const { signageRequest } = req.body;
-    console.log('Received signageRequest:', signageRequest);
-    console.log('posting from:', apiUrl);
+
     if (!signageRequest) {
       return res.status(400).json({ 
         error: 'Missing signageRequest in request body' 
       });
     }
 
-    // persist to DB with user from req.user and provided status (or default)
     try {
       const doc = new SignageRequest({
         fullName: signageRequest.fullName,
@@ -46,7 +42,6 @@ export const forwardSignageRequest = async (req, res) => {
       signageRequest._id = doc._id;
     } catch (err) {
       console.error('Failed to persist signage request:', err.message || err);
-      // continue to forward even if persistence failed
     }
 
     // Prepare the payload for CP4BA
