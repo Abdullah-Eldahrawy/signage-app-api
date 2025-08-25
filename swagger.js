@@ -14,6 +14,11 @@ const options = {
     ],
     components: {
       securitySchemes: {
+        // provide a `basic` entry so IBM BAW can reference the scheme name 'basic'
+        basic: {
+          type: 'http',
+          scheme: 'basic'
+        },
         basicAuth: {
           type: 'http',
           scheme: 'basic'
@@ -25,22 +30,6 @@ const options = {
         }
       }
     },
-    // legacy Swagger 2.0 style securityDefinitions for tools that expect them (e.g., some IBM parsers)
-    securityDefinitions: {
-      // alias named 'basic' because some consumers (IBM BAW) expect the scheme to be named 'basic'
-      basic: {
-        type: 'basic'
-      },
-      // keep basicAuth as well for backwards compatibility
-      basicAuth: {
-        type: 'basic'
-      },
-      bearerAuth: {
-        type: 'apiKey',
-        name: 'Authorization',
-        in: 'header'
-      }
-    }
   },
   apis: ['./routes/*.js'], 
 };
