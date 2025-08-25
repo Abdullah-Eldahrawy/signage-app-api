@@ -5,7 +5,7 @@ import Modification from '../models/Modification.js';
 
 export const forwardSignageRequest = async (req, res) => {
   try {
-    const apiUrl = "https://cpd-cp4ba.apps.automation.sumerge.com/bas/automationservices/rest/SB/SR08_12/Signage%20Intake%20API/createSignageRequest";
+    const apiUrl = "https://cpd-cp4ba.apps.automation.sumerge.com/bas/automationservices/rest/SB/SR08_13/Signage%20Intake%20API/createSignageRequest";
 
     const username = 'fnadmin';
     const password = 'P@ssw00rd';
