@@ -12,7 +12,6 @@ export const createModification = async (req, res, next) => {
 
     const modification = new Modification({
       notes: normalized,
-      author: req.user.id,
       signageRequest: signageRequestId
     });
 
@@ -27,7 +26,7 @@ export const createModification = async (req, res, next) => {
 
 export const listModifications = async (req, res, next) => {
   try {
-    const items = await Modification.find().populate('author', 'email name').populate('signageRequest');
+    const items = await Modification.find().populate('email name').populate('signageRequest');
     res.json(items);
   } catch (err) { next(err); }
 };
@@ -35,7 +34,7 @@ export const listModifications = async (req, res, next) => {
 export const getModificationById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const item = await Modification.findById(id).populate('author', 'email name').populate('signageRequest');
+    const item = await Modification.findById(id).populate('email name').populate('signageRequest');
     if (!item) return res.status(404).json({ error: { message: 'Not found' } });
     res.json(item);
   } catch (err) { next(err); }
