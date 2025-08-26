@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import authRoutes from './auth.routes.js';
 import bpmRoutes from './bpm.routes.js';
-import modificationRoutes from './modification.routes.js';
+import modificationRoutes from './admin.routes.js';
 
 const router = Router();
 

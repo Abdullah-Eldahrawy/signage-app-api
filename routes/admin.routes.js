@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createModification, listModifications, getModificationById } from '../controllers/modification.Controller.js';
+import { createModification, listModifications, getModificationById } from '../controllers/admin.Controller.js';
 import auth from '../src/middelware/auth.js';
 import basicAuth from '../src/middelware/basicAuth.js';
 import { permit } from '../src/middelware/authorize.js';
