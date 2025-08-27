@@ -38,7 +38,8 @@ const signageRequestSchema = new mongoose.Schema(
               default: 'Sr. Manager - Channel Development Approval'
             },
             status: { type: String, enum: ['pending', 'approved', 'rejected', 'Requires Modification'], default: 'pending' },
-            at: { type: Date, default: Date.now }
+            createdAt: { type: Date, default: Date.now },
+            updatedAt: { type: Date, default: null }
           },
           { _id: false }
         )
