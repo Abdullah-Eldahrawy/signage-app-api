@@ -12,7 +12,7 @@ const router = Router();
  * /signage/requests/{id}/status:
  *   patch:
  *     summary: Admin update of a signage request current stage status
- *     tags: [admin]
+ *     tags: [signage]
  *     security:
  *       - basic: []
  *     parameters:

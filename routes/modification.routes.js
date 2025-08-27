@@ -59,3 +59,5 @@ router.post('/createModoficationReq', basicAuth, permit('admin'), createModifica
  *         description: Unauthorized
  */
 router.get('/signage/:id', auth, getModificationsForSignage);
+
+export default router;

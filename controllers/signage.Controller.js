@@ -31,7 +31,7 @@ export const updateStageStatus = async (req, res, next) => {
         const idx = STAGE_SEQUENCE.indexOf(currentStageName);
         const nextStage = (idx >= 0 && idx < STAGE_SEQUENCE.length - 1) ? STAGE_SEQUENCE[idx + 1] : null;
         if (nextStage) {
-          doc.stageHistory.push({ stage: nextStage, status: 'pending', createdAt: now, updatedAt: now });
+          doc.stageHistory.push({ stage: nextStage, status: 'pending', createdAt: now });
         }
       } else {
         last.status = status;

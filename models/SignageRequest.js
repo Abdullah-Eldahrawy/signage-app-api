@@ -51,7 +51,6 @@ const signageRequestSchema = new mongoose.Schema(
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
-// Virtual to get the latest stage (convenience for API consumers)
 signageRequestSchema.virtual('currentStage').get(function () {
   if (!this.stageHistory || this.stageHistory.length === 0) return undefined;
   return this.stageHistory[this.stageHistory.length - 1];

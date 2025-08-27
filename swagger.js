@@ -14,12 +14,7 @@ const options = {
     ],
     components: {
       securitySchemes: {
-        // provide a `basic` entry so IBM BAW can reference the scheme name 'basic'
         basic: {
-          type: 'http',
-          scheme: 'basic'
-        },
-        basicAuth: {
           type: 'http',
           scheme: 'basic'
         },
