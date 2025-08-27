@@ -23,3 +23,12 @@ export const createModification = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getModificationsForSignage = async (req, res, next) => {
+  try {
+    const { id } = req.params; 
+    if (!id) return res.status(400).json({ error: { message: 'signage request id required' } });
+  const mods = await Modification.find({ signageRequest: id });
+    res.json(mods);
+  } catch (err) { next(err); }
+};

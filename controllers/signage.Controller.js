@@ -41,3 +41,11 @@ export const updateStageStatus = async (req, res, next) => {
       res.status(201).end();
   } catch (err) { next(err); }
 };
+
+export const getRequestsForUser = async (req, res, next) => {
+  try {
+    if (!req.user || !req.user.id) return res.status(401).json({ error: { message: 'Unauthorized' } });
+    const items = await SignageRequest.find({ user: req.user.id })
+    res.json(items);
+  } catch (err) { next(err); }
+};

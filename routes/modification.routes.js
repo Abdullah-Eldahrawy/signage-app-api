@@ -1,10 +1,12 @@
 import { Router } from 'express';
-import { createModification } from '../controllers/modification.Controller.js';
+import { createModification, getModificationsForSignage } from '../controllers/modification.Controller.js';
+import auth from '../src/middelware/auth.js';
 import basicAuth from '../src/middelware/basicAuth.js';
 import { permit } from '../src/middelware/authorize.js';
 
 const router = Router();
 
+//================ Admin Routes ====================//
 /**
  * @swagger
  * /modification/createModoficationReq:
@@ -34,3 +36,26 @@ const router = Router();
  *         description: Modification created
  */
 router.post('/createModoficationReq', basicAuth, permit('admin'), createModification);
+
+//================ Client Routes ====================//
+/**
+ * @swagger
+ * /modification/signage/{id}:
+ *   get:
+ *     summary: Get modifications for a signage request (authenticated users)
+ *     tags: [modifications]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Array of modifications
+ *       401:
+ *         description: Unauthorized
+ */
+router.get('/signage/:id', auth, getModificationsForSignage);
