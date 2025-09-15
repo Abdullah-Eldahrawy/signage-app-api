@@ -45,7 +45,7 @@ export const updateStageStatus = async (req, res, next) => {
 export const getRequestsForUser = async (req, res, next) => {
   try {
     if (!req.user || !req.user.id) return res.status(401).json({ error: { message: 'Unauthorized' } });
-    const items = await SignageRequest.find({ user: req.user.id })
+  const items = await SignageRequest.find({ user: req.user.id }).select('-attachments');
     res.json(items);
   } catch (err) { next(err); }
 };
