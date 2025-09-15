@@ -5,10 +5,13 @@ import Modification from '../models/Modification.js';
 
 export const forwardSignageRequest = async (req, res) => {
   try {
-    const apiUrl = "https://cpd-cp4ba.apps.automation.sumerge.com/bas/automationservices/rest/SB/SR08_13/Signage%20Intake%20API/createSignageRequest";
+    const apiUrl = process.env.CP4BA_API_URL;
+    const username = process.env.CP4BA_USERNAME;
+    const password = process.env.CP4BA_PASSWORD;
 
-    const username = 'fnadmin';
-    const password = 'P@ssw00rd';
+    if (!apiUrl || !username || !password) {
+      return res.status(500).json({ error: 'CP4BA configuration is missing. Please set CP4BA_API_URL, CP4BA_USERNAME, and CP4BA_PASSWORD.' });
+    }
 
     const agent = new https.Agent({
         rejectUnauthorized: false,

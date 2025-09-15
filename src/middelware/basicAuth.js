@@ -23,8 +23,8 @@ export default (req, res, next) => {
     const username = decoded.slice(0, sep);
     const password = decoded.slice(sep + 1);
 
-    const expectedUser = process.env.BASIC_AUTH_USER;
-    const expectedPass = process.env.BASIC_AUTH_PASS;
+    const expectedUser = process.env.CP4BA_USERNAME;
+    const expectedPass = process.env.CP4BA_PASSWORD;
     if (!expectedUser || !expectedPass) {
       return res.status(500).json({ error: { message: 'Basic auth not configured on server' } });
     }
